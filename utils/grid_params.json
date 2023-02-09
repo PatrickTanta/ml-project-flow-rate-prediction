@@ -1,0 +1,161 @@
+{
+    "params_grid_production": {
+        "linear": {
+            "fit_intercept": [true, false],
+            "n_jobs": [-1],
+            "normalize": [true, false]
+        },
+        "lasso": {
+            "alpha": [0.0001, 0.0002, 0.00025, 0.0003, 0.00031, 0.00032, 0.00033, 0.00034, 0.00035, 0.00036, 0.00037, 0.00038, 0.0004, 0.00045, 0.0005, 0.00055, 0.0006, 0.0008, 0.001, 0.002, 0.005, 0.007, 0.008, 0.01],
+            "random_state": [123]
+        },
+        "ridge": {
+            "alpha": [9,9.2,9.4,9.5,9.52,9.54,9.56,9.58,9.6,9.62,9.64,9.66,9.68,9.7,9.8],
+            "random_state": [123]
+        },
+        "kr": {
+            "alpha": [0.27, 0.28, 0.29, 0.3],
+            "kernel": ["polynomial", "linear"],
+            "degree": [2, 3],
+            "coef0": [3.5, 4, 4.2]
+        },
+        "elnt": {
+            "alpha": [0.0003, 0.00035, 0.00045, 0.0005],
+            "l1_ratio": [0.80, 0.85, 0.9, 0.95],
+            "random_state": [123]
+        },
+        "dt": {
+            "max_depth": [2, 3, 5, 10, 20],
+            "min_samples_leaf": [5, 10, 20, 50, 100],
+            "criterion": ["squared_error", "friedman_mse", "absolute_error", "poisson"]
+        },
+        "svm": {
+            "kernel": ["rbf"],
+            "C": [1, 2, 3, 4, 5, 6],
+            "gamma": [0.0001,0.0002,0.0003,0.0004,0.0005,0.0006,0.0007,0.0008,0.0009,0.001]
+        },
+        "knn": {
+            "n_neighbors": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
+            "weights": ["uniform", "distance"],
+            "algorithm": ["auto", "ball_tree", "kd_tree", "brute"],
+            "leaf_size": [20, 30, 40],
+            "p": [1, 2]
+        },
+        "rf": {
+            "max_depth": [3, 4, 5, 6],
+            "min_samples_split": [2, 3, 4],
+            "min_samples_leaf": [1, 2, 3]
+        },
+        "et": {
+            "n_estimators": [50, 100, 150],
+            "max_features": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+            "min_samples_split": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        },
+        "ab": {
+            "n_estimators": [50, 100],
+            "learning_rate": [0.01, 0.05, 0.1, 0.3, 1],
+            "loss": ["linear", "square", "exponential"]
+        },
+        "gb": {
+            "learning_rate": [0.1, 0.12, 0.15, 0.20],
+            "n_estimators": [50, 100, 150, 200],
+            "min_samples_split": [2, 3, 4],
+            "min_samples_leaf": [2, 3, 4],
+            "max_depth": [5, 6, 7],
+            "alpha": [0.7, 0.8, 0.85]
+        },
+        "xgb": {
+            "nthread": [4],
+            "objective": ["reg:linear"],
+            "learning_rate": [0.03, 0.05, 0.07],
+            "max_depth": [5, 6, 7],
+            "min_child_weight": [4],
+            "silent": [1],
+            "subsample": [0.7],
+            "colsample_bytree": [0.7],
+            "n_estimators": [500]
+        },
+        "lgb": {"learning_rate": [0.10, 0.12, 0.15], "n_estimators": [50, 100, 150]},
+        "mlpr": {
+            "max_iter": [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+        }
+    },
+    "params_grid_develop": {
+        "linear": {
+            "fit_intercept": [true],
+            "n_jobs": [-1],
+            "normalize": [true]
+        },
+        "lasso": {
+            "alpha": [0.0001],
+            "random_state": [123]
+        },
+        "ridge": {
+            "alpha": [9, 12],
+            "random_state": [123]
+        },
+        "kr": {
+            "alpha": [0.3],
+            "kernel": ["polynomial", "linear"],
+            "degree": [2],
+            "coef0": [3.5]
+        },
+        "elnt": {
+            "alpha": [0.0005],
+            "l1_ratio": [0.28]
+        },
+        "dt": {
+            "max_depth": [20],
+            "min_samples_leaf": [20],
+            "criterion": ["absolute_error"]
+        },
+        "svm": {
+            "kernel": ["rbf"],
+            "C": [6],
+            "gamma": [0.001]
+        },
+        "knn": {
+            "n_neighbors": [5],
+            "weights": ["distance"],
+            "algorithm": ["auto"],
+            "leaf_size": [20],
+            "p": [1]
+        },
+        "rf": {
+            "max_depth": [6],
+            "min_samples_split": [2],
+            "min_samples_leaf": [3]
+        },
+        "et": {
+            "n_estimators": [150],
+            "max_features": [20],
+            "min_samples_split": [2]
+        },
+        "ab": {
+            "n_estimators": [50],
+            "learning_rate": [0.01],
+            "loss": ["exponential"]
+        },
+        "gb": {
+            "learning_rate": [0.1],
+            "n_estimators": [50],
+            "min_samples_split": [2],
+            "min_samples_leaf": [2],
+            "max_depth": [5],
+            "alpha": [0.7]
+        },
+        "xgb": {
+            "nthread": [4],
+            "objective": ["reg:linear"],
+            "learning_rate": [0.03],
+            "max_depth": [5],
+            "min_child_weight": [4],
+            "silent": [1],
+            "subsample": [0.7],
+            "colsample_bytree": [0.7],
+            "n_estimators": [100]
+        },
+        "lgb": {"learning_rate": [0.10], "n_estimators": [100]},
+        "mlpr": {"max_iter": [100]}
+    }
+}
