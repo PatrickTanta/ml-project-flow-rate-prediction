@@ -60,20 +60,25 @@ if __name__ == '__main__':
     print("\ncat_cols: ", cat_cols, "\n")
 
     # only apply logarithmic function for permeability
-    permeability_column = 'Permeability'
+    permeability_column = 'Permeabilidad'
     k_transformer = FunctionTransformer(log_transform)
 
-    if permeability_column in cat_cols:
-        cat_cols.remove(permeability_column)
+    if permeability_column in numeric_cols:
+        numeric_cols.remove(permeability_column)
+
+    print('perm removed: ', permeability_column)
+    print(numeric_cols)
 
     preprocessor = preprocessing.build_column_transformer_for_pipe(
         numeric_steps=[('scaler', RobustScaler())],
         numeric_cols=numeric_cols,
         categorical_steps=[('onehot', OneHotEncoder(handle_unknown='ignore'))],
         categorical_cols=cat_cols,
-        permeability_col=permeability_column,
-        permeability_steps=[('k_transformer', k_transformer)]
+        permeability_steps=[('k_transformer', k_transformer)],
+        permeability_col=permeability_column
     )
+    print(f'X_train {X_train.columns}')
+    print(f'X_train {X_test.columns}')
     modelling.run_basic_model_and_show_results(preprocessor, X_train, y_train, X_test, y_test, plotting)
 
 

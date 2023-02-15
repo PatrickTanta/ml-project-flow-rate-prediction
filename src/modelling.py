@@ -139,17 +139,19 @@ class ModellingData:
         pipe_collection = {}
         initialized_models = self.export_initialized_models()
 
-        print(initialized_models.items())
-
         for key, model in tqdm(initialized_models.items()):
             pipe_collection[key] = Pipeline(
                 [('preprocessing', preprocessor), ('model', model)]
             )
 
+        print(X_train.columns)
+
         mae_score = {}
         for key, pipe in tqdm(pipe_collection.items()):
+            print('Executing ... ')
             _ = pipe.fit(X=X_train, y=y_train)
             mae_score[key] = mean_absolute_error(y_test, pipe.predict(X_test))
+            print('model fited: ', key)
 
         df_basic_models = pd.DataFrame([mae_score])
 

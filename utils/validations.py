@@ -8,4 +8,6 @@ def test_if_necessary_columns_exists(data_columns, options):
 
 
 def log_transform(x):
-    return np.log10(x)
+    """Return a dataframe with logarithm appliec"""
+    x = x.apply(np.log10)
+    return x.to_frame()

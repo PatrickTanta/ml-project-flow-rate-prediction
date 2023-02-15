@@ -49,7 +49,8 @@ class PreprocessingData:
                 ('numeric', numeric_transformer, numeric_cols),
                 ('cat', categorical_transformer, categorical_cols),
                 ('k',  k_transformer, permeability_col)
-            ]
+            ],
+            remainder='passthrough'
         )
 
         return preprocessor
