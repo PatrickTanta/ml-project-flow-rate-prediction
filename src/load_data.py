@@ -34,3 +34,17 @@ class Files:
         """
         joblib.dump(model, filename)
 
+    @staticmethod
+    def import_model(filename):
+        """
+        Function to import model
+        """
+        try:
+            with open(filename, 'rb') as f:
+                data = joblib.load(f)
+            return data
+        except (OSError, IOError) as e:
+            return False
+
+
+

@@ -1,5 +1,4 @@
 from sklearn.preprocessing import RobustScaler, OneHotEncoder, FunctionTransformer
-
 from src import cleaning, load_data, preprocessing, chart, modelling
 from utils.validations import log_transform
 
@@ -14,7 +13,7 @@ if __name__ == '__main__':
     dataset = file_data.copy()
     cleaning = cleaning.CleanData()
     preprocessing = preprocessing.PreprocessingData()
-    modelling = modelling.ModellingData()
+    modelling = modelling.ModellingData(load_data=load_data.Files)
     plotting = chart.Chart()
 
     # drop unnecessary columns
@@ -77,9 +76,14 @@ if __name__ == '__main__':
         permeability_steps=[('k_transformer', k_transformer)],
         permeability_col=permeability_column
     )
+
     print(f'X_train {X_train.columns}')
     print(f'X_train {X_test.columns}')
-    modelling.run_basic_model_and_show_results(preprocessor, X_train, y_train, X_test, y_test, plotting)
+
+    # modelling.run_basic_model_and_show_results(preprocessor, X_train, y_train, X_test, y_test, plotting)
+    # modelling.run_cross_validation_model_and_show_results(preprocessor, X_train, y_train, X_test, y_test, plotting)
+    modelling.run_cross_validation_optimized_model_and_show_results(preprocessor, X_train, y_train, X_test, y_test, plotting)
+
 
 
 
